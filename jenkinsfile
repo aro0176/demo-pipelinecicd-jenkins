@@ -25,8 +25,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-		        sh 'rm -fr *'
-		        git branch: 'main', url: 'https://github.com/aro0176/demo-pipelinecicd-jenkins'
+		sh 'rm -fr *'
+		git branch: 'main', url: 'https://github.com/aro0176/demo-pipelinecicd-jenkins.git'
                 ansiblePlaybook installation: 'ansible', inventory: 'hosts.ini', playbook: 'deploy.yml', vaultTmpPath: ''
             }
         }
