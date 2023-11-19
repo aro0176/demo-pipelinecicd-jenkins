@@ -1,0 +1,6 @@
+---
+ utilisateur: "{{ user }}"
+ domaine_react : "{{ site_name }}"
+ dossier_www: /var/www/{{ domaine_react }}
+ config_apache: "{{ site_name }}.conf" 
+...

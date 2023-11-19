@@ -1,0 +1,63 @@
+---
+
+ - name: Création Dossier dans WWW
+   become: yes
+   file:
+     path: "{{ dossier_www }}"
+     state: directory
+     owner: "{{ utilisateur }}"
+     group: "{{ utilisateur }}"
+     mode: 0755
+
+ - name: Copy build l'application ReactJS
+   become: yes
+   copy:
+     src: /var/lib/jenkins/Buildapp/dist
+     dest: "{{ dossier_www }}"
+
+############ Below are the ssl configuration steps ################
+ - name: Copier Private key SSL
+   become: yes
+   copy:
+     src: "/var/lib/jenkins/Openssl/{{ keyssl }}"
+     dest: /etc/ssl/certs/
+
+ - name: Copier Certificat key SSL
+   become: yes
+   copy:
+      src: "/var/lib/jenkins/Openssl/{{ certssl }}"
+      dest: /etc/ssl/certs/
+   notify: restart apache
+
+ - name: Activer le site web avec SSL
+   command: a2enmod ssl
+   become: yes
+
+ - shell: a2ensite default-ssl
+   become: yes
+   notify: restart apache
+############ above is the ssl configuration step ################
+ 
+ - name: Configuration Apache
+   become: yes
+   template:
+     src: deployReactSsl.conf.j2
+     dest: /etc/apache2/sites-available/{{ config_apache }}
+   notify: restart apache  
+
+ - become: yes
+   command: a2enmod rewrite
+ 
+ - name: personnalisations spécifiques du react
+   template:
+     src: htaccess.j2
+     dest: "{{ dossier_www }}/dist/.htaccess"
+   notify: restart apache
+
+ - name: Activer le site apache
+   become: yes
+   shell: "a2ensite {{ config_apache }}"
+   args:
+     warn: no
+   notify: restart apache
+...
