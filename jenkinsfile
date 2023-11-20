@@ -18,6 +18,7 @@ pipeline {
         stage('Test & Build') {
             steps {
                 sh "npm install"
+		sh "npm test"
                 sh "npm run build"
                 sh "rm -fr /var/lib/jenkins/Buildapp/* && cp -fr dist /var/lib/jenkins/Buildapp"
             }
