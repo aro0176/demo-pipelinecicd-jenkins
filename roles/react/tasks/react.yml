@@ -49,6 +49,7 @@
    command: a2enmod rewrite
  
  - name: personnalisations spécifiques du react
+   become: yes
    template:
      src: htaccess.j2
      dest: "{{ dossier_www }}/dist/.htaccess"
