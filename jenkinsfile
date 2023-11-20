@@ -9,7 +9,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/aro0176/demo-react.git'
             }
         }
-        stage(Run) {
+        stage('Run') {
 	    steps {
 	    	sh "npm install"
 	    }
