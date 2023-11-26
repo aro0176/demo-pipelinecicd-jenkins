@@ -1,11 +1,4 @@
----
- - name: Installation PostgreSQL
-   become: yes
-   apt: 
-     name: postgresql
-     state: present
-   ignore_errors: yes
- 
+--- 
  - name: Active le service postgresql
    become: yes
    service:
