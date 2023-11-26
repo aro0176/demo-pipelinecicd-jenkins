@@ -1,10 +1,4 @@
 ---
- - name: Installation apache
-   become: yes
-   apt:
-     name: apache2
-     update_cache: yes
-
  - name: Active service apache
    become: yes
    service: 
