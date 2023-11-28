@@ -42,7 +42,7 @@ pipeline {
     success {
         emailext(
             subject: "Succès du pipeline CI/CD",
-            body: "Le pipeline Reactjs et FastApi a été exécuté avec succès. Prends soins de toi Mr Toavina",
+            body: "Le pipeline Reactjs et FastApi a été exécuté avec succès. Prends soins de toi Mr Toavina https://349d-154-126-9-240.ngrok-free.app/view/demo/job/demokeli/",
             to: "aroiorenantsoa@gmail.com"
         )
     }
