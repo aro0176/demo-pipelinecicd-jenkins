@@ -34,7 +34,7 @@ pipeline {
         failure {
           emailext(
             subject: "Échec du pipeline CI/CD",
-            body: "Alerte!!! Alerte!!!! Le Pipeline React a échoue, Veuillez voir le logs pour réparer",
+            body: "Alerte!!! Alerte!!!! Le Pipeline React a échoue, Veuillez voir le logs pour réparer. Cliquez ce lien : ",
             to: "aroiorenantsoa@gmail.com"
         )
     }
@@ -42,7 +42,7 @@ pipeline {
     success {
         emailext(
             subject: "Succès du pipeline CI/CD",
-            body: "Le pipeline Reactjs et FastApi a été exécuté avec succès. Prends soins de toi Mr Toavina https://349d-154-126-9-240.ngrok-free.app/view/demo/job/demokeli/",
+            body: "Félicitation, le pipeline Reactjs et FastApi a été exécuté avec succès. Prends soins de toi Mr Toavina.",
             to: "aroiorenantsoa@gmail.com"
         )
     }
