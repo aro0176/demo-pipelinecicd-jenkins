@@ -34,7 +34,7 @@ pipeline {
         failure {
           emailext(
             subject: "Échec du pipeline CI/CD",
-            body: "Alerte!!! Alerte!!!! Le Pipeline React a échoue, Veuillez voir le logs pour réparer. Cliquez ce lien : ",
+            body: "Alerte!!! Alerte!!!! Le Pipeline React a échoue, Veuillez voir le logs pour réparer. Cliquez ce lien : https://4a48-154-126-10-165.ngrok-free.app ",
             to: "aroiorenantsoa@gmail.com"
         )
     }
